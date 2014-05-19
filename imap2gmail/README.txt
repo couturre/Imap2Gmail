@@ -22,3 +22,11 @@ EXECUTION ENVIRONMENT
 Python 3.4
 
 ***
+
+
+To use this program, supply needed information in settings.py file, and
+add a crontab entry to execute « python3 imap2gmail.py » regularly.
+
+You can use an output redirect for logging purpose, 
+e.g. « python3 imap2gmail.py > /var/log/imap2gmail.log ».
+Make sure that the log file exists and is writable.
