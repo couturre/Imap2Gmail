@@ -92,7 +92,7 @@ if valid_settings:
         fetcher.close_connection()
     
         for message in messages:
-            log("Transferring message from %0s" % (message["from"]))
+            log('Transferring message "%0s" from %1s' % (message["Subject"], message["from"]))
             try:
                 smtp.sendmail(message["from"], settings.MAIL_TO, message.as_string())
             except Exception as e:
