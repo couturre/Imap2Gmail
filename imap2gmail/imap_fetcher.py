@@ -44,5 +44,7 @@ class ImapFetcher:
                     message_data = self._connection.fetch(message_id, '(RFC822)')[1]
                     for data_part in message_data:
                         if isinstance(data_part, tuple):
-                            messages.append(email.message_from_bytes(data_part[1]))
+                            message = email.message_from_bytes(data_part[1])
+                            message.set_charset("utf-8")
+                            messages.append(message)
         return messages
