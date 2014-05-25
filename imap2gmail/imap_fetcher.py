@@ -34,7 +34,16 @@ class ImapFetcher:
             name = self._MAILBOX_LIST_ITEM_PATTERN.match(mailbox).groups()[2]
             mailbox_list.append(name)
         return mailbox_list
-        
+    
+    def fetch_message(self, message_id):
+        raw_message = self._connection.fetch(message_id, '(RFC822)')[1][0][1]
+        message = email.message_from_bytes(raw_message)
+        try:
+            message.set_charset("utf-8")
+        except:
+            pass
+        return message
+    
     def fetch_new_messages(self):
         messages = []
         for mailbox in self.get_mailbox_list():
@@ -42,10 +51,5 @@ class ImapFetcher:
             new_message_ids = self._connection.search(None, 'UNSEEN')[1][0].split(b' ')
             for message_id in new_message_ids:
                 if message_id.isdigit():
-                    message_data = self._connection.fetch(message_id, '(RFC822)')[1]
-                    for data_part in message_data:
-                        if isinstance(data_part, tuple):
-                            message = email.message_from_bytes(data_part[1])
-                            message.set_charset("utf-8")
-                            messages.append(message)
+                    messages.append(self.fetch_message(message_id))
         return messages
