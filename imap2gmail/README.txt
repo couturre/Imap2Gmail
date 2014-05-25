@@ -19,14 +19,14 @@ Please read LICENSE.txt for complete license notice.
 
 EXECUTION ENVIRONMENT
 
-Python 3.4
+Python 3.x
 
 ***
 
 
 To use this program, supply needed information in settings.py file, and
-add a crontab entry to execute « python3 imap2gmail.py » regularly.
-
-You can use an output redirect for logging purpose, 
-e.g. « python3 imap2gmail.py > /var/log/imap2gmail.log ».
-Make sure that the log file exists and is writable.
+add a crontab entry to execute it regularly. You can also use an output
+redirection for logging purpose.
+ 
+Crontab entry example to run imap2gmail every 15 minutes and log its output: 
+*/15 * * * * /usr/bin/python3 /usr/imap2gmail/imap2gmail.py > /var/log/imap2gmail.log
