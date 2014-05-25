@@ -15,7 +15,7 @@ also use an output redirection for logging purpose.
  
 ### Crontab entry example
 
-    */15 * * * * /usr/bin/python3 /usr/imap2gmail/imap2gmail.py > /var/log/imap2gmail.log
+    */15 * * * * /usr/bin/python3 /usr/imap2gmail/imap2gmail.py >> /var/log/imap2gmail.log
 
 ## License
 

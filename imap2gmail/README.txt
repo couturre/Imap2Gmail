@@ -29,4 +29,4 @@ add a crontab entry to execute it regularly. You can also use an output
 redirection for logging purpose.
  
 Crontab entry example to run imap2gmail every 15 minutes and log its output: 
-*/15 * * * * /usr/bin/python3 /usr/imap2gmail/imap2gmail.py > /var/log/imap2gmail.log
+*/15 * * * * /usr/bin/python3 /usr/imap2gmail/imap2gmail.py >> /var/log/imap2gmail.log
