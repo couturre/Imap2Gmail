@@ -29,7 +29,8 @@ class ImapFetcher:
     def get_mailbox_list(self):
         mailbox_list = []
         for mailbox in self._connection.list()[1]:
-            mailbox = mailbox.decode("utf-8")
+            if type(mailbox) == bytes:
+                mailbox = mailbox.decode("utf-8")
             name = self._MAILBOX_LIST_ITEM_PATTERN.match(mailbox).groups()[2]
             mailbox_list.append(name)
         return mailbox_list
